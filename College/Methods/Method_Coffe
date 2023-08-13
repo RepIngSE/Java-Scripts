@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class Cafetera {
+    int Capacidadmax;
+    int Cantidadact;
+    int cafe = 0;
+
+    // Constructor de la clase Cafetera
+    public Cafetera() {
+        Capacidadmax = 1000;
+        Cantidadact = 0;
+    }
+
+    // Método para comparar y ajustar la cantidad actual si es mayor que la capacidad máxima
+    public void comparacion() {
+        if (Cantidadact > Capacidadmax) {
+            Cantidadact = Capacidadmax;
+        }
+    }
+
+    // Método para llenar la cafetera hasta su capacidad máxima
+    public void llenar() {
+        Cantidadact = Capacidadmax;
+        System.out.println("La cafetera esta llena con: " + Cantidadact);
+    }
+
+    // Método para servir café de la cafetera a una taza
+    public void servir(int s) {
+        if (s > 1000) {
+            System.out.println("Se derramó la bebida");
+        } else {
+            System.out.println("La bebida de la taza no ha excedido el límite");
+        }
+    }
+
+    // Método para vaciar la cafetera
+    public void vaciar() {
+        Cantidadact = 0;
+        System.out.println("La cafetera está vacía");
+    }
+
+    // Método para agregar café a la cafetera
+    public void añadir(int a) {
+        cafe = cafe + a;
+        if (cafe > 1000) {
+            System.out.println("La cantidad de café solicitada excede la capacidad de la cafetera");
+        } else {
+            System.out.println("La cantidad de café que hay en la cafetera es de: " + cafe);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        Cafetera Ca = new Cafetera();
+        Ca.comparacion();
+        Ca.llenar();
+        int x = 0, z = 0;
+        
+        // Solicitar al usuario la cantidad de café que desea
+        System.out.println("Digite la cantidad de café que desea: ");
+        x = teclado.nextInt();
+        Ca.servir(x);
+        Ca.vaciar();
+        
+        // Solicitar al usuario la cantidad de café que desea agregar a la cafetera
+        System.out.println("La cantidad de café que desea agregar a la cafetera es: ");
+        z = teclado.nextInt();
+        Ca.añadir(z);
+    }
+}
