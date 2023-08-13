@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class NotaUsuario1 {
+    public static void main(String[] args) {
+        int i, error = 0; // Variable para el contador y para manejar errores
+        double prom, nota = 0, suma = 0; // Variables para el promedio, calificación y suma
+
+        // Ciclo para ingresar las calificaciones
+        for (i = 1; i <= 3; i++) {
+            do {
+                System.out.println("Digite calificacion");
+                Scanner teclado = new Scanner(System.in);
+
+                // Leer la calificación
+                nota = teclado.nextDouble();
+
+                // Verificar si la calificación está dentro del rango válido (0-10)
+                if (nota < 0 || nota > 10) {
+                    error = 1; // Establecer error si la calificación no es válida
+                    System.out.println("Introduzca una calificacion entre 0 y 10");
+                } else {
+                    error = 0; // No hay error si la calificación es válida
+                }
+            } while (error != 0); // Repetir hasta que se ingrese una calificación válida
+
+            // Acumular la calificación en la suma total
+            suma = suma + nota;
+        }
+
+        // Calcular el promedio
+        prom = suma / 3;
+
+        // Mostrar resultados
+        System.out.println("La suma de las notas es: " + suma);
+        System.out.println("Su promedio es: " + prom);
+    }
+}
